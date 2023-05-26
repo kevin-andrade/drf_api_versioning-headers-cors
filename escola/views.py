@@ -1,4 +1,6 @@
 from rest_framework import viewsets, generics
+from rest_framework import status
+from rest_framework.response import Response
 
 from escola.models import *
 from escola.serializers import *
@@ -7,7 +9,12 @@ from escola.serializers import *
 class AlunosViewSet(viewsets.ModelViewSet):
     '''Exibindo todos os alunos'''
     queryset = Aluno.objects.all()
-    serializer_class = AlunoSerializer
+    # (/?version=V2)
+    def get_serializer_class(self):
+        if self.request.version == 'v2':
+            return AlunoSerializerV2
+        else:
+            return AlunoSerializer
 
 
 class CursosViewSet(viewsets.ModelViewSet):
