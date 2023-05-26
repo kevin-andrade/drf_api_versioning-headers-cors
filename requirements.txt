@@ -2,6 +2,7 @@ asgiref==3.7.1
 astroid==2.15.5
 dill==0.3.6
 Django==4.2.1
+django-cors-headers==4.0.0
 djangorestframework==3.14.0
 Faker==18.9.0
 isort==5.12.0
